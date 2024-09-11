@@ -7,6 +7,8 @@ Markdown is a lightweight markup language for creating formatted text using a pl
 
 [Github pages](https://pages.github.com/)
 
+https://learnxinyminutes.com/docs/markdown/
+
 
 
 Ciao mondo1.<br>Ciao mondo 2
