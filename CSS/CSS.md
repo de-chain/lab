@@ -1,4 +1,4 @@
-Cascading Style Sheets è il codice che definisce lo stile del contenuto web.
+#websi
 
 ## Come funziona
 Crea una directory Styles nel root del tuo sito e, al suo interno crea un file style.css.<br>Il file contiene gli stili della nostra pagina web index.html.
