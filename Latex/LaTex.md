@@ -1,3 +1,6 @@
+# LaTex
+
+20240923194309
 
  *Abbiamo visto che la programmazione è un’arte,
  perché richiede conoscenza, applicazione, abilità e ingegno,
@@ -6,8 +9,7 @@
 
  ## la nascita di Tex
  LATEX è un programma di composizione tipografica liberamente disponibile, indicato soprattutto per scrivere documenti scientifici con la più alta qualità,  realizzato da Donald Ervin Knuth, professore di Informatica all’Università di Stanford (usa), e distribuito con una licenza di software libero.
-
- Nel 1977, Knuth cominciò a scrivere il suo “motore” di tipocomposizione per esplorare le potenzialità degli strumenti di stampa digitale che allora cominciavano a muovere i primi timidi passi in campo editoriale. <br>Il programma ha visto la luce nel 1982. 
+Nel 1977, Knuth cominciò a scrivere il suo “motore” di tipocomposizione per esplorare le potenzialità degli strumenti di stampa digitale che allora cominciavano a muovere i primi timidi passi in campo editoriale. <br>Il programma ha visto la luce nel 1982. 
 
 TEX si pronuncia tèch (aspirando il ch finale).  Knuth dice che «se TEX è ben pronunciato, lo schermo del calcolatore si appanna leggermente».
 
