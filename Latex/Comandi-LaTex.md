@@ -3,6 +3,7 @@
 20240915091708
 
 [editor Latex on line](https://it.overleaf.com/)
+
 Latex è un programma che prende il testo che scriviamo, lo compila e lo converte in Pdf.
 I documenti di latex hanno estensione ``.TeX``.
 In un documento di latex ci sono tre tipi di contenuti:
