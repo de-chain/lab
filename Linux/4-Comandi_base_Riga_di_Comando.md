@@ -1,19 +1,33 @@
-
-
-Per avere la conferma di essere nella cartella /home/mario/ è utile eseguire il comando pwd, il quale stamperà a schermo il percorso corrente. Digitare il seguente comando:
-
-pwd
-Gestione di file e directory
-
-* pwd
+### pwd
 Il comando pwd serve per mostrare la directory in cui ci si trova.
+``users/fabio``
 
-* ls
-Il comando ls serve per elencare il contenuto di una directory.
-
+**ls, abbreviazione di list, stampa "mostra a video" i file contenuti nella directory attuale.**
 La sintassi del comando è:  ls [opzione] [directory]
-
+ls è un alias che colora le cartelle.
 ![alt text](../Images/Opzioni_ls.JPG)
+
+- con -a stampa anche i file nascosti
+- con -l stampa tutte le info inclusi i permessi
+- con -R stampa anche le sottodirectory e i  file al loro interno
+- con -r stampa i file ordinati in modo inverso
+- con -nome_cartella stampa i file presenti in nome_cartella
+
+**touch, crea un file vuoto**
+``touch nome_file``
+
+**nano, editor di testo**
+``nano nome_file``
+apre nome_file per editare testo al suo interno.
+[editor nano](https://wiki.ubuntu-it.org/Ufficio/EditorDiTesto/Nano)
+
+**cat, abbreviazione di concatenate, stampa il contenuto di un file**
+``cat nome_file``
+
+**mkdir, crea nuova cartella**
+``mkdir nuova_cartella``
+
+ctrl + l sposta la shell verso l alto senza cancellare i comandi
 
 * cd
 

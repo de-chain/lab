@@ -2,15 +2,11 @@
 ### Introduzione
 
 Un sistema operativo è composto da:
-- Un kernel, programma che gestisce l’hardware al livello più basso e si occupa ad esempio di interagire con memoria, CPU, periferiche.
+- Un kernel, programma che gestisce l’hardware al livello più basso e si occupa di interagire con memoria, CPU, periferiche.
 - Delle applicazioni utente, che si appoggiano al kernel per interagire con le varie
-funzionalità (ad esempio, utilizzare memoria e/o mostrare un’immagine a video).
+funzionalità (ad esempio, utilizzare memoria, mostrare un’immagine a video ......).
 
-Esempi: 
-- Windows `e composto del kernel NT e l’interfaccia grafica, 
-- Mac OS X ha un kernel di nome XNU, e sistemi come Ubuntu
-- Distribuzioni Linux utilizzano il
-Kernel di Linux
+  Windows `e composto del kernel NT, Mac OS X ha un kernel di nome XNU, le distribuzioni linux usano il kernel di Linux.
 
 Linux è nato, rispetto a sistemi commerciali come Windows e MacOS X, come sistema free opensource.
 
@@ -21,9 +17,8 @@ Tutto `e iniziato da un’email del 1991:
 Nel 1991, al progetto GNU avevano un compilatore, delle applicazioni utente, ma gli
 mancava un kernel. Quando Linux `e nato, era solamente un kernel; da qui sono nati i sistemi GNU/Linux.
 
-Poco dopo il primo rilascio di Linux, sono nate le prime distribuzioni Linux, come Debian
-e Slackware.
-Ubuntu, una delle distribuzioni oggi più utilizzatanei personal computer, è basata su
+Poco dopo il primo rilascio di Linux, sono nate le prime distribuzioni Linux, come Debian e Slackware.
+Ubuntu, una delle distribuzioni oggi più utilizzata nei personal computer, è basata su
 Debian.
 
 I computer hanno molte interfacce attraverso cui dar loro comandi.
@@ -32,7 +27,7 @@ La shell non è che un programma come tutti gli altri.
 Attraverso la shell è possibile compiere diverse operazioni come: interagire con i file, avviare programmi, installare e gestire i pacchetti. 
 
 ### Un pò di storia
-I sistemi operativi che esistevano prima di Linux e di Unix (ricordiamo che Linux e' un clone di Unix) possedevano già degli interpreti di comandi al loro interno, ma tali interpreti avevano un difetto: non erano modificabili. Quando Ken Thompson e Dennis Ritchie cominciarono a scrivere Unix, decisero di creare una interfaccia utente modificabile a seconda delle esigenze che si potevano presentare di volta in volta. Cio' che venne fuori fu un tipo di shell programmabile, contenente istruzioni simili a quelle del linguaggio C. Questo non e' un caso visto che la prima versione di Unix venne scritta in linguaggio assembler, ma fu successivamente riscritta in linguaggio C (ricordiamo che Dennis Ritchie e' insieme a Brian Kerninghan l'inventore del linguaggio C). L'interprete dei comandi creato sotto Unix venne chiamato shell. Una delle prime shell venne creata agli inizi degli anni 70 presso i Bell Laboratories AT&T ad opera di Steven R. Bourne e venne chiamata appunto Bourne shell (sh). Verso la fine degli anni 70 presso l'università di Berkley venne creata la C shell (csh) allo scopo di estendere la shell Bourne e renderla più simile al linguaggio di programmazione C. Successivamente vennero sviluppate altre shell, come la Korn shell (ksh) e la TC shell (tcsh). A causa dei problemi di copyright, l'organizzazione GNU decise di sviluppare una shell completamente libera da restrizioni e nacque cosi' la shell BASH, cioè Bourne Again SHell. Esistono molteplici versioni di shell, la shell ash, la shell csh, la shell ksh, la shell pdksh, la shell tcsh, la shell zsh ed altre ancora, ma la shell BASH e' senza dubbio la piu' famosa ed usata in tutti i sistemi Linux. La shell BASH e' conforme allo standard POSIX. Posix sta per Portable Operating System Interface for uniX, cioè interfaccia standard per il sistema operativo Unix e si tratta di uno standard creato verso la fine degli anni 80 allo scopo di uniformare le varie versioni di Unix. Successivamente, ad opera del gruppo IEEE (Institute of Electrical and Electronics Engineers, cioe' istituto degli ingegneri elettrotecnici ed elettronici) lo standard POSIX venne adottato anche da altri sistemi operativi non Unix come VMS, MVS, NT etc.
+I sistemi operativi che esistevano prima di Linux e di Unix (ricordiamo che Linux e' un clone di Unix) possedevano già degli interpreti di comandi al loro interno, ma tali interpreti avevano un difetto: non erano modificabili. Quando Ken Thompson e Dennis Ritchie cominciarono a scrivere Unix, decisero di creare una interfaccia utente modificabile a seconda delle esigenze che si potevano presentare di volta in volta. Cio' che venne fuori fu un tipo di shell programmabile, contenente istruzioni simili a quelle del linguaggio C. Questo non e' un caso visto che la prima versione di Unix venne scritta in linguaggio assembler, ma fu successivamente riscritta in linguaggio C (ricordiamo che Dennis Ritchie e' insieme a Brian Kerninghan, l'inventore del linguaggio C). L'interprete dei comandi creato sotto Unix venne chiamato shell. Una delle prime shell venne creata agli inizi degli anni 70 presso i Bell Laboratories AT&T ad opera di Steven R. Bourne e venne chiamata appunto Bourne shell (sh). Verso la fine degli anni 70 presso l'università di Berkley venne creata la C shell (csh) allo scopo di estendere la shell Bourne e renderla più simile al linguaggio di programmazione C. Successivamente vennero sviluppate altre shell, come la Korn shell (ksh) e la TC shell (tcsh). A causa dei problemi di copyright, l'organizzazione GNU decise di sviluppare **una shell completamente libera da restrizioni** e nacque cosi' **la shell BASH, cioè Bourne Again SHell.** Esistono molteplici versioni di shell, la shell ash, la shell csh, la shell ksh, la shell pdksh, la shell tcsh, la shell zsh ed altre ancora, ma **la shell BASH e' senza dubbio la piu' famosa ed usata in tutti i sistemi Linux.** La shell BASH e' conforme allo standard POSIX. Posix sta per Portable Operating System Interface for uniX, cioè interfaccia standard per il sistema operativo Unix e si tratta di uno standard creato verso la fine degli anni 80 allo scopo di uniformare le varie versioni di Unix. Successivamente, ad opera del gruppo IEEE (Institute of Electrical and Electronics Engineers, cioe' istituto degli ingegneri elettrotecnici ed elettronici) lo standard POSIX venne adottato anche da altri sistemi operativi non Unix come VMS, MVS, NT etc.
 
 
 ### Il kernel 
@@ -47,8 +42,13 @@ Altri programmi applicativi come browser, elaboratori di testi, lettori audio e 
 
 ![alt text](../Images/Kernel.JPG)
 
+### I pacchetti
+Ogni software installato dall'utente, assieme al rsto del so, viene gestito come un pacchetto.
+Su window siamo abituati a ricercare, scaricare estrarre e installare manualmente ogni applicazione.
+Su linux il gestore dei pacchetti si occupa di tutto ciò e gestisce anche gli aggiornamenti e la idsinstallazione. Questo rende estrememante facile mantenere il computer aggiornato.
+
 ### la Riga di Comando
-Shell, terminale e riga di comando sono termini che indicano in maniera equivalente un dispositivo a interfaccia testuale. Può servire a svolgere gran parte delle mansioni in un sistema operativo: muoversi attraverso il file system per creare, cancellare o rinominare file, scaricare, installare o rimuovere programmi, per configurare l'hardware, per creare script e molto altro.
+Shell, terminale o riga di comando sono termini che indicano in maniera equivalente un dispositivo a interfaccia testuale. Può servire a svolgere gran parte delle mansioni in un sistema operativo: muoversi attraverso il file system per creare, cancellare o rinominare file, scaricare, installare o rimuovere programmi, configurare l'hardware, creare script e molto altro.
 
 Tante delle azioni sopra elencate, come noto alla maggior parte degli utenti, possono essere svolte tramite programmi a interfaccia grafica. La riga di comando può essere utile qualora sussistano dei malfunzionamenti di tali programmi e si vogliano tracciare eventuali bug, nel caso non esistano programmi a interfaccia grafica o semplicemente perché l'utente ritiene comodo usarla.
 
@@ -61,17 +61,19 @@ Bash è una "Unix shell", vale a dire un'interfaccia a linea (o riga) di comando
 
 Quando avviamo il terminale vedremo una riga come questa:<br>
 
-mario@mario-desktop:~$
+``mario@mario-desktop:~$``
 
-L'utente mario, all'interno del computer mario-desktop, si trova attualmente nella propria Home, cioè /home/mario/, indicata con il simbolo ~ chiamato Tilde.
+- mario è l'utente
+- mario-desktop è il nome host
+- la ~  "Tilde, indica la cartella attuale
+- $ indica la modalità di esecuzione della shell
 
-È attiva la modalità utente, indicata dal simbolo $.<br>Esiste anche una modalità amministratore, attivabile con il comando sudo -s e caratterizzata dal simbolo #.<br> 
-[Amministratore di sistema](https://wiki.ubuntu-it.org/AmministrazioneSistema/PrivilegiDiAmministrazione/Sudo)
-
+Il simbolo $ indica la modalità utente, il simbolo # indica la modalità amministratore di sistema ed è attivabile dal comando sudo -s
+[Il comando sudo]](https://wiki.ubuntu-it.org/AmministrazioneSistema/PrivilegiDiAmministrazione/Sudo)
 
 Il file system, inteso come la directory che contiene tutte le altre, è rappresentato dal simbolo / chiamato root (da non confondere con la cartella /root la Home dell'amministratore)
 
-## la directory home
+## La directory home
 
 È la directory che contiene tutte le Home degli utenti presenti nel sistema. Ogni home porta il nome dell'utente, nel nostro caso mario.
 
