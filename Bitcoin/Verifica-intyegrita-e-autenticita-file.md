@@ -1,5 +1,5 @@
 [Verifica firme di Musumeci](https://www.youtube.com/watch?v=loi7XTrw7tE "verifica firme by Musumeci")
- 
+[verifica software Linux Cinnemon](https://linuxmint-installation-guide.readthedocs.io/en/latest/verify.html) 
 
 Preparazione alla verifica<br>
 `cd Scaricati` mi posiziono nella directory dove scaricherò i file<br>
@@ -40,6 +40,11 @@ nella home troveremo la directory .gnupg con all interno:
 * pubring.kbx e copia di backup pubring kbx~  detto keyring pubblico, contiene le chiavi pubbliche conosciute dall'utente. Queste chiavi sono usate per cifrare messaggi indirizzati al destinatario ( un messaggio viene cifrato con la chiave pubblica del destinatario) o verificare le firme di un messaggio
 * trustdb.gpg che contiene info sulla fiducia relativa alle chiavi pubbliche
 * private-keys-v1.d contiene le chiavi private in formato cifrato gestite da GnuPg. E' un luogo sicuro in cui vengono conservate le chiavi private associate agli utenti utilizzate per decriptare messaggi o firmare digitalmente i dati.<br>
+
+`dechain@dechain-HPeliteD:~/Scaricati$ gpg --list-keys`<br>
+gpg: directory '/home/dechain/.gnupg' creata<br>
+gpg: keybox '/home/dechain/.gnupg/pubring.kbx' creato<br>
+gpg: /home/dechain/.gnupg/trustdb.gpg: creato il trustdb<br>
 
 `gpg --keyid-format long --verify SHA256SUMS.gpg SHA256SUMS`<br>
 Se non abbiamo alcuna chiave pubblica presente nel nostro file pubring.kbx avro il seguente messaggio:
