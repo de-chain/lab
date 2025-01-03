@@ -133,51 +133,78 @@ potrebbero risultare diversi da quanto ci si aspetta
 
 ## Partizionare per PC 64 bit
 Per utilizzare un nuovo disco fisso (oppure per cancellare completamente l’intera tabella delle partizioni del proprio disco) è necessario creare una nuova tabella delle partizioni. Con il «Partizionamento guidato» la tabella delle partizioni
-viene creata automaticamente, invece con il partizionamento manuale occorre selezionare la voce che corrisponde al disco con il livello più alto e premere Invio. Sui sistemi UEFI il tipo
-di tabella predefinito è «gpt», sui sistemi più vecchi con BIOS il tipo predefinito è «msdos». I valori predefiniti sono utilizzati automaticamente quando l’installazione procede con la priorità standard.
+viene creata automaticamente, invece con il partizionamento manuale occorre selezionare la voce che corrisponde al disco con il livello più alto e premere Invio.  
+Sui sistemi UEFI il tipo
+di tabella predefinito è «gpt», sui sistemi più vecchi con BIOS il tipo predefinito è «msdos».
 
-Quando viene scelta una tabella delle partizioni di tipo «gpt» (il valore predefinito sui
-sistemi UEFI), viene automaticamente aggiunto uno spazio libero da 1 MB all’inizio
-del disco. Ciò è intenzionale e necessario per poi inserirci il bootloader GRUB 2.
-Se si usa già un altro sistema operativo come DOS o Windows e si intende preservarlo mentre si installa Debian,
-potrebbe essere necessario ridimensionare la sua partizione per liberare spazio per l’installazione di Debian. L’installatore supporta il ridimensionamento dei file system FAT e NTFS: arrivati alla fase di partizionamento, occorre
-selezionare l’opzione Manuale e poi scegliere la partizione esistente da ridimensionare.
+Quando viene scelta una tabella delle partizioni di tipo «gpt» (il valore predefinito sui sistemi UEFI), viene automaticamente aggiunto uno spazio libero da 1 MB all’inizio
+del disco. Ciò è intenzionale e necessario per poi inserirci il bootloader GRUB 2.  
+
 Sebbene i moderni sistemi UEFI non abbiano le limitazioni elencate in seguito, i vecchi PC con BIOS hanno
 alcuni vincoli riguardanti il partizionamento del disco. C’è un limite al numero di partizioni «primarie» e «logiche»
-che possono essere contenute in un disco. Inoltre, i BIOS anteriori al periodo 1994–98 contengono limitazioni sulla
-posizione del disco che può essere avviata dal BIOS. È possibile trovare maggiori informazioni nel Linux Partition
-HOWTO anche se questo capitolo contiene una breve panoramica utile nella maggior parte delle situazioni.
+che possono essere contenute in un disco.  
+Inoltre, i BIOS anteriori al periodo 1994–98 contengono limitazioni sulla
+posizione del disco che può essere avviata dal BIOS.  
 Le partizioni «primarie» sono il tipo di partizione tradizionale per i dischi dei PC. Tuttavia, possono esisterne
-al massimo quattro per ogni disco; per superare questa limitazione, sono state introdotte le partizioni «estese» e
+al massimo quattro per ogni disco, per superare questa limitazione, sono state introdotte le partizioni «estese» e
 «logiche». Impostando una partizione primaria come partizione estesa, è possibile suddividere ulteriormente lo spazio
 allocato a questa partizione in più partizioni logiche. È possibile creare fino a 60 partizioni logiche per ogni partizione
-estesa, ma è possibile avere solo una partizione estesa per ogni disco.
-Linux limita il numero delle partizioni per disco a 255 partizioni sui dischi SCSI (3 partizioni primarie e 252
-partizioni logiche), e a 63 partizioni sui dischi IDE (3 partizioni primarie, 60 partizioni logiche). Tuttavia, il sistema
-Debian GNU/Linux standard fornisce solo 20 file di device per rappresentare le partizioni, quindi se si intende creare
-più di 20 partizioni occorrerà prima creare manualmente i device per le nuove partizioni.
-Se si possiede un disco IDE grande e non si sta usando né l’indirizzamento LBA, né i driver talvolta forniti dai
-produttori di hard disk, allora la partizione di avvio (quella che contiene l’immagine del kernel) deve trovarsi all’interno
-dei primi 1024 cilindri del disco (di solito circa 524 MB, senza traduzione da parte del BIOS).
-Questa restrizione non è rilevante se si possiede un BIOS più recente del periodo 1995–98 (a seconda del produttore) che supporta la «Enhanced Disk Drive Support Specification». Il programma alternativo a Lilo di Debian
-mbr deve affidarsi al BIOS per leggere il kernel dal disco e caricarlo nella RAM. Se il BIOS supporta le estensioni
-int 0x13 per l’accesso ai dischi grandi, queste verranno utilizzate; altrimenti occorrerà utilizzare la vecchia interfaccia
-di accesso al disco, che non può accedere porzioni del disco che si trovano oltre il 1023-esimo cilindro. Una volta
-avviato Linux, qualsiasi sia il BIOS del computer, queste restrizioni non sono più vincolanti, visto che Linux non usa
-il BIOS per accedere al disco.
-Se si ha un disco grande, è possibile che si debbano usare tecniche di traduzione del numero di cilindri da attivare
-nel proprio BIOS, come ad esempio l’LBA (Logical Block Addressing) o la modalità CHS («Large»). È possibile
-trovare maggiori informazioni su questo problema nel Large Disk HOWTO. Se si usa uno schema di traduzione del
-numero di cilindri e il BIOS non supporta le estensioni per l’accesso ai dischi grandi, allora la partizione di avvio deve
-essere compresa all’interno del 1024-esimo cilindro nella sua rappresentazione tradotta.
-Il modo consigliato di risolvere questo problema consiste nel creare una piccola partizione (25–50MB dovrebbero
-essere sufficienti) all’inizio del disco, da usare come partizione di avvio, e di creare tutte le altre partizioni nello spazio
-rimanente. Questa partizione di avvio deve essere montata su /boot, la directory destinata a contenere i kernel
-Linux. Questo tipo di configurazione funzionerà su tutti i sistemi, sia che venga usato l’LBA o la traduzione CHS, e
-a prescindere dal fatto che il proprio BIOS supporti le estensioni per l’accesso ai dischi grandi.
+estesa, ma **è possibile avere solo una partizione estesa per ogni disco.**  
 
+## Partizione manuale disco fisso
+
+Il partizionamento manuale è il modo più tradizionale di installare Linux e fornisce maggior controllo e flessibilità in tanti tipi di scenari differenti. 
+
+Le partizioni obbligatorie per installare Linux sono solo due. Diverse ragioni connesse spesso alla scelta di fare partizionamenti manuali, sono legate all'opportunità di separare le componenti operative delle parti del sistema, con partizioni che non sono obbligatorie.
+
+1 Partizione EFI per il boot loader (l'avvio)
+
+2 Partizione radice per il sistema e i programmi
+
+* Partizione opzionale swap  
+Si tratta di uno spazio su hard-disk in cui sono temporaneamente parcheggiate informazioni quando la memoria RAM non basti a contenerle tutte. Lo swap è utile se un bug in un programma esaurisce la RAM rendendo instabile il sistema, o, più spesso, quando cerchi di far compiere operazioni troppo impegnative ad un computer inadeguato e con troppa poca RAM.  La partizione di swap non è obbligatoria. Infatti l'installazione automatica di Linux Mint crea automaticamente solo un file di swap nella stessa partizione del sistema. In ambiente Windows è previsto lo stesso meccanismo.  
+In Debian questo non viene fatto, quindi è consigliabile crearla
+
+| Ram Sistema | Spazio Swap |
+|-------------|-------------|
+| 4GB         | 2GB         |
+| 4-16GB      | 4GB         |
+| 16-64GB     | 8GB         |
+| 64-256GB    | 16GB        |
+
+* Partizione home
+Inserire la cartella home con le singole cartelle di documenti degli utenti in apposita partizione separata dal sistema e dai programmi. 
+Si tratta di una partizione non obbligatoria per far funzionare Linux. E' utile se viene reinstallato spesso il sistema operativo 
+o se viene posizionata in un disco dati differente.
+
+Gparted è il programma utilizzato durante l'installazione del sistema.  
+Con i moderni SSD non ha molto senso la sequenza e posizione delle partizioni come invece influiva con i dischi meccanici. 
+
+1 Identificare lo spazio libero del disco.  
+2 Creiamo la prima partizione obbligatoria, la partizione di sistema in formato Efi. bastano 300 mb
+
+![alt text](<Images/Partizione EFI.png>)
+
+Diciamo al sistema che il boot loader deve essere posizionato li
+
+![alt text](<Images/Posizione boot loader.png>)
+
+2 Creiamo la seconda partizione obbligatoria, la partizione radice in formato Ext
+Se creeremo una apposita partizione per la cartella /home, riserviamo alla partizione root almeno 60 GB per far stare comodo il sistema e diversi programmi
+
+![alt text](<Images/Partizione Radice.png>)
+
+3 Creiamo la partizione Swap in formato area Swap "vedi tabella sopra per definire la grandezza".
+
+![alt text](<Images/Partizione Swap.png>)
+
+4 Creiamo la partizione Home con lo spazio rimasto libero in formato Ext
+
+![alt text](<Images/Partizione Home.png>)
 
 Bibliografia
 
 [Ubuntu partizioni](https://wiki.ubuntu-it.org/Hardware/DispositiviPartizioni/Partizioni)<br>
 [Cos'è una partizione HOWTO](https://tldp.org/HOWTO/Partition/intro.html#howtos)
+[Alternativalinux](https://www.alternativalinux.it/come-installare-linux-mint-con-partizioni-manuali/simplenote
+)
